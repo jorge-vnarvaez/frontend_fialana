@@ -17,6 +17,7 @@
             align-start align-lg-center
             my-20
             w-full
+            px-8
           "
           fill-height
         >
@@ -43,7 +44,7 @@
             "
             >Esta iniciativa surge gracias al apoyo de la Fundación para la
             Innovación Agraria (FIA), ejecutado por la Unidad de Innovación de
-            la Facultad de Ingeniería de la Universidad de Concepcióny la
+            la Facultad de Ingeniería de la Universidad de Concepción y la
             empresa regional Grupo Singular.</span
           >
         </v-container>
@@ -56,19 +57,14 @@
     <!-- [IMPULSORES] -->
 
     <!-- [COLABORADORES] -->
-
+    <colaboradores-section />
     <!-- [COLABORADORES] -->
 
     <!-- [NUESTRO EQUIPO] -->
     <div class="bg-neutral-900 text-white" v-if="miembros.length > 0">
       <v-container class="py-16 flex flex-col align-center">
         <p class="text-3xl lg:text-5xl">Nuestro Equipo</p>
-        <span
-          class="text-sm lg:text-xl w-full lg:w-10/12 xl:w-4/12 text-center mt-6"
-        >
-          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-          nonumy eirmod tempor invidunt ut labore et dolore magna
-        </span>
+
         <div
           class="grid grid-cols-12 my-16"
           @mouseleave="showInfoMiembro = false"
@@ -121,8 +117,9 @@
 
 <script>
 import ImpulsoresSection from '../components/ImpulsoresSection.vue';
+import ColaboradoresSection from '../components/ColaboradoresSection.vue';
 export default {
-  components: { ImpulsoresSection },
+  components: { ImpulsoresSection, ColaboradoresSection },
   data() {
     return {
       showInfoMiembro: false,

@@ -14,10 +14,12 @@
     "marked": "^4.0.17",
     "moment": "^2.29.3",
     "nuxt": "^2.15.8",
+    "nuxt-video-player": "^1.0.17",
     "qs": "^6.10.5",
     "vue": "^2.6.14",
     "vue-server-renderer": "^2.6.14",
     "vue-template-compiler": "^2.6.14",
+    "vue-youtube-embed": "^2.2.2",
     "vuetify": "^2.6.6",
     "webpack": "^4.46.0"
   },

@@ -15,7 +15,7 @@
           v-show="$vuetify.breakpoint.mobile ? true : false"
           large
           color="white"
-          @click="showOptions = !showOptions"
+          @click="toggleNavBar"
           >mdi-menu</v-icon
         >
 
@@ -54,17 +54,25 @@
                 <span class="text-decoration-none text-white">Noticias</span>
               </li></nuxt-link
             >
-            <li
-              class="
-                border border-amber-100
-                px-4
-                py-1
-                rounded-full
-                hover:bg-amber-100 hover:text-neutral-900
-              "
+            <nuxt-link :to="{ name: 'entregas' }" class="group"
+              ><li
+                class="
+                  border border-amber-100
+                  px-4
+                  py-1
+                  rounded-full
+                  hover:bg-amber-100
+                "
+              >
+                <span
+                  class="
+                    text-decoration-none text-white
+                    group-hover:text-neutral-900
+                  "
+                  >Entregas</span
+                >
+              </li></nuxt-link
             >
-              Entregas
-            </li>
             <nuxt-link :to="{ name: 'calendario' }" class="group"
               ><li
                 class="
@@ -72,10 +80,16 @@
                   px-4
                   py-1
                   rounded-full
-                  hover:bg-amber-100 
+                  hover:bg-amber-100
                 "
               >
-                <span class="text-decoration-none text-white group-hover:text-neutral-900">Calendario</span>
+                <span
+                  class="
+                    text-decoration-none text-white
+                    group-hover:text-neutral-900
+                  "
+                  >Calendario</span
+                >
               </li></nuxt-link
             >
           </ul>
@@ -87,34 +101,50 @@
 
     <!-- [MOBILE] -->
     <div
-      v-if="showOptions && $vuetify.breakpoint.mobile"
+      v-show="$vuetify.breakpoint.mobile ? showOptions : false"
       class="text-white font-thin w-full"
     >
       <div class="flex flex-col justify-end align-end w-fullt text-xs">
         <nuxt-link :to="{ name: 'index' }"
           ><div class="px-3 py-4">
-            <span class="text-decoration-none text-white">INICIO</span>
+            <span class="text-decoration-none text-white" @click="hideNavBar"
+              >INICIO</span
+            >
           </div></nuxt-link
         >
         <nuxt-link :to="{ name: 'el-proyecto' }"
           ><div class="px-3 py-4">
-            <span class="text-decoration-none text-white">EL PROYECTO</span>
+            <span class="text-decoration-none text-white" @click="hideNavBar"
+              >EL PROYECTO</span
+            >
           </div></nuxt-link
         >
         <nuxt-link :to="{ name: 'quienes-somos' }"
           ><div class="px-3 py-4">
-            <span class="text-decoration-none text-white">QUIÉNES SOMOS</span>
+            <span class="text-decoration-none text-white" @click="hideNavBar"
+              >QUIÉNES SOMOS</span
+            >
           </div></nuxt-link
         >
         <nuxt-link :to="{ name: 'noticias' }"
           ><div class="px-3 py-4">
-            <span class="text-decoration-none text-white">NOTICIAS</span>
+            <span class="text-decoration-none text-white" @click="hideNavBar"
+              >NOTICIAS</span
+            >
           </div></nuxt-link
         >
-        <div class="bg-cafe w-full flex justify-end px-3 py-4">ENTREGAS</div>
-        <nuxt-link :to="{ name: 'noticias' }"
+        <nuxt-link :to="{ name: 'entregas' }" class="bg-cafe w-full"
           ><div class="bg-cafe w-full flex justify-end px-3 py-4">
-            <span class="text-decoration-none text-white">CALENDARIO</span>
+            <span class="text-decoration-none text-white" @click="hideNavBar"
+              >ENTREGAS</span
+            >
+          </div></nuxt-link
+        >
+        <nuxt-link :to="{ name: 'calendario' }" class="bg-cafe w-full"
+          ><div class="bg-cafe w-full flex justify-end px-3 py-4">
+            <span class="text-decoration-none text-white" @click="hideNavBar"
+              >CALENDARIO</span
+            >
           </div></nuxt-link
         >
       </div>
@@ -125,10 +155,18 @@
 
 <script>
 export default {
-  data() {
-    return {
-      showOptions: false,
-    };
+  methods: {
+    toggleNavBar() {
+      this.$store.dispatch("ui/toggleNavBar");
+    },
+    hideNavBar() {
+      this.$store.dispatch("ui/hideNavBar");
+    },
+  },
+  computed: {
+    showOptions() {
+      return this.$store.getters["ui/getNavBarStatus"];
+    },
   },
 };
 </script>

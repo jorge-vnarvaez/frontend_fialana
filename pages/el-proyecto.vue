@@ -1,7 +1,16 @@
 <template>
   <div>
     <!-- [VIDEO] -->
-
+    <youtube
+      :video-id="videoId"
+      player-width="100%"
+      player-height="100%"
+      :player-vars="{ autoplay: 1, controls: 0, showinfo: 0, loop: 1 }"
+      :mute="true"
+      ref="youtube"
+      @ended="ended"
+      class="h-screen w-screen"
+    ></youtube>
     <!-- [VIDEO] -->
 
     <!-- [PRIMERA SECCION] -->
@@ -62,10 +71,6 @@
       <v-container class="pt-16 px-8">
         <div class="flex flex-col align-center">
           <p class="text-3xl lg:text-5xl mb-0">Objetivos específicos</p>
-          <span class="block text-sm lg:text-xl text-center my-6 w-10/12">
-            Lorem ipsum dolor sit amet, consetetur sadipsc ing elitr, sed diam
-            nonumy eirmod tempor invidunt ut labore et dolore magna
-          </span>
         </div>
 
         <v-divider class="mb-12 mt-8"></v-divider>
@@ -103,12 +108,14 @@
     <!-- [OBJETIVOS ESPECIFICOS] -->
 
     <!-- [ETAPAS Y RESULTADOS] -->
-    <div class="py-8">
+    <div class="py-[50px] lg:py-[150px]">
       <p class="text-3xl lg:text-5xl text-center">Etapas y resultados</p>
       <div class="flex justify-center">
-        <span class="block text-xs lg:text-sm text-center w-full lg:w-4/12 px-8">
-          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-          nonumy eirmod tempor invidunt ut labore et dolore magna
+        <span
+          class="block text-xs lg:text-xl text-center w-full lg:w-8/12 px-8"
+        >
+          Aqui puedes revisar las etapas y resultados de cada etapa del
+          proyecto.
         </span>
       </div>
 
@@ -122,7 +129,7 @@
     <!-- [ETAPAS Y RESULTADOS] -->
 
     <!-- [TESTIMONIOS] -->
-    <div
+    <!-- <div
       v-if="testimonios.length > 0"
       class="
         bg-neutral-900
@@ -157,12 +164,8 @@
           class="col-span-12 lg:col-span-4 p-8"
         />
       </div>
-    </div>
+    </div> -->
     <!-- [TESTIMONIOS] -->
-
-    <!-- [PRINCIPALES IMPULSORES] -->
-    <impulsores-section />
-    <!-- [PRINCIPALES IMPULSORES] -->
   </div>
 </template>
 
@@ -170,8 +173,25 @@
 import CardTestimonios from "../components/CardTestimonios.vue";
 import ImpulsoresSection from "../components/ImpulsoresSection.vue";
 import TimelineEtapas from "../components/TimelineEtapas.vue";
+import VideoPlayer from "../components/VideoPlayer.vue";
+
 export default {
-  components: { CardTestimonios, ImpulsoresSection, TimelineEtapas },
+  components: {
+    CardTestimonios,
+    ImpulsoresSection,
+    TimelineEtapas,
+    VideoPlayer,
+  },
+  data() {
+    return {
+      videoId: "K2bNsCSmuXE",
+    };
+  },
+  methods: {
+    ended() {
+      this.$refs.youtube.player.seekTo(0);
+    },
+  },
   async asyncData(context) {
     const objetivos = await context.$axios
       .get(`${context.$config.apiUrl}/api/objetivos`)

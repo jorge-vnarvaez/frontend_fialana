@@ -3,7 +3,7 @@
     <!-- [HERO] -->
      <div class="bg-neutral-900">
       <v-img
-        src="/HERO-QUIENES-SOMOS.jpg"
+        src="/HERO-ENTREGAS.jpg"
         height="245"
         class="text-white"
         :position="$vuetify.breakpoint.mobile ? 'top' : 'center'"
@@ -30,38 +30,25 @@
               text-left text-lg-center
             "
           >
-            Noticias y Eventos
+            Entregas
           </p>
         </v-container>
       </v-img>
     </div>
-    <!-- [HERO] -->
 
-
-    <!-- [NOTICIAS] -->
-    <div>
-        <noticias-list />
+    <div class="py-[50px] lg:py-[100px]">
+        <entregas />
     </div>
-
-    <!-- [NOTICIAS] -->
-
-     <!-- [EVENTOS] -->
-    <div>
-        <eventos-list />
-    </div>
-
-    <!-- [EVENTOS] -->
   </div>
 </template>
 
 <script>
-import NoticiasList from "../components/NoticiasList.vue";
-import EventosList from "../components/EventosList.vue";
-
+import Entregas from '../components/Entregas.vue';
 export default {
-  components: { NoticiasList, EventosList },
-};
+    components: { Entregas }
+}
 </script>
 
 <style>
+
 </style>

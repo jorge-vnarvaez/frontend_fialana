@@ -10,7 +10,14 @@
         gradient="rgba(23, 23, 23, .80), rgba(23,23,23, .60)"
       >
         <v-container
-          class="text-white flex flex-col lg:justify-center align-start my-20"
+          class="
+            text-white
+            flex flex-col
+            lg:justify-center
+            align-start
+            my-20
+            px-8
+          "
           fill-height
         >
           <p class="text-3xl lg:text-5xl w-7/12 md:w-3/12 xl:w-2/12 mb-0">
@@ -48,49 +55,60 @@
       <div
         :class="`
           ${padding}
-          grid grid-cols-12 grid-rows-2
+          grid grid-cols-12
           gap-x-0
-          lg:gap-x-10 lg:w-8/12
+          lg:gap-x-10
           w-full
+          lg:w-8/12
           mx-auto
           lg:py-20
         `"
       >
-        <div class="col-span-12 lg:col-span-6">
+        <div class="col-span-12 lg:col-span-6 row-span-1">
           <v-img
             src="/logo-fialana-c.svg"
             contain
-            :class="`${$vuetify.breakpoint.mobile ? 'w-32 h-10' : 'w-80 h-24'}`"
+            :class="`${$vuetify.breakpoint.mobile ? 'w-48 h-20' : 'w-80 h-24'}`"
           ></v-img>
         </div>
-        <div class="bg-white col-span-12 lg:col-span-6 lg:order-2 mt-8">
-          <!-- VIDEO -->
+
+        <div class="bg-white col-span-12 lg:col-span-6 lg:order-2 mt-16">
+          <video-player></video-player>
         </div>
+
         <div
           class="
             bg-white
             col-span-12
             lg:col-span-6 lg:row-span-2
-            p-6
-            lg:p-10
+            p-[20px]
+            lg:p-[80px]
             rounded-br-3xl
             lg:rounded-br-none
             rounded-tr-none
             lg:rounded-tr-3xl
             shadow-xl
+            h-[420px]
+            lg:h-[520px]
+            flex flex-col
+            justify-center
+            align-center
           "
         >
-          <p class="text-amber-900 text-3xl">Lana magallánica</p>
-          <v-divider class="px-8 bg-orange-200"></v-divider>
-          <span class="block mt-5 font-medium lg:w-80"
-            >Somos el Programa de comercialización de Lana Magallánica</span
-          >
-          <span class="block text-xs mt-5 lg:w-72 text-start"
-            >Un programa que busca co-diseñar e implementar, en conjunto con
-            productores y actores relevantes, soluciones que contribuyan a
-            mejorar las condiciones de competitividad de la lana de la región de
-            Magallanes y de la Antártica Chilena, y su comercialización.</span
-          >
+          <div>
+            <p class="text-amber-900 text-3xl">Lana magallánica</p>
+            <v-divider class="px-8 bg-orange-200"></v-divider>
+            <span class="block mt-5 font-medium lg:w-80"
+              >Somos el Programa de comercialización de Lana Magallánica</span
+            >
+            <span class="block text-xs mt-5 lg:w-72 text-start"
+              >Un programa que busca co-diseñar e implementar, en conjunto con
+              productores y actores relevantes, soluciones que contribuyan a
+              mejorar las condiciones de competitividad de la lana de la región
+              de Magallanes y de la Antártica Chilena, y su
+              comercialización.</span
+            >
+          </div>
         </div>
       </div>
     </div>
@@ -161,36 +179,14 @@
         >
           Noticias y Eventos
         </p>
-        <div class="flex justify-center">
-          <p class="text-sm lg:text-xl text-center mt-2 lg:w-4/12">
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-            nonumy eirmod tempor invidunt ut labore et dolore magna
-          </p>
-        </div>
       </div>
 
       <!-- <v-divider class="my-8 bg-${#cfcfcf} w-6/12 text-center"></v-divider> -->
 
-      <div class="w-full flex flex-col align-center" v-show="destacadas.length > 0">
-        <div>
-          <p
-            class="
-              text-3xl
-              lg:text-5xl
-              text-center
-              mt-10
-              lg:mt-48
-              text-gray-900
-            "
-          >
-            Destacadas
-          </p>
-
-          <div class="flex justify-center">
-            <span class="border-2 border-b border-cafe w-40"></span>
-          </div>
-        </div>
-
+      <div
+        class="w-full flex flex-col align-center"
+        v-show="destacadas.length > 0"
+      >
         <div>
           <v-divider></v-divider>
         </div>
@@ -244,72 +240,66 @@
           <p class="text-gray-900 text-xl lg:text-5xl mb-8">Contáctanos</p>
           <!-- <p class="font-semibold text-sm text-gray-900">(+1) 123 456 7890</p>
           <p class="font-semibold text-sm text-gray-900">(+1) 123 456 7891</p> -->
+          <v-form
+            v-model="validado"
+            lazy-validation
+            ref="formulario"
+            @submit="contactarse"
+          >
+            <div class="grid grid-cols-12 lg:gap-x-2 mt-8 gap-y-4">
+              <v-text-field
+                v-model="nombre"
+                placeholder="Nombre"
+                 :rules="reglaNotNull"
+                class="col-span-12 lg:col-span-6"
+                background-color="#DCD2C7"
+                solo
+                flat
+              >
+              </v-text-field>
 
-          <div class="grid grid-cols-12 lg:gap-x-2 mt-8 gap-y-4">
-            <input
-              type="text"
-              placeholder="Nombre"
-              class="
-                bg-[#dcd2c7]
-                col-span-12
-                lg:col-span-6
-                rounded-md
-                py-5
-                px-4
-                placeholder:text-cafe
-                text-cafe
-                font-semibold
-              "
-            />
-            <input
-              type="text"
-              placeholder="Email"
-              class="
-                bg-[#dcd2c7]
-                col-span-12
-                lg:col-span-6
-                rounded-md
-                py-5
-                px-4
-                placeholder:text-cafe
-                text-cafe
-                font-semibold
-              "
-            />
-            <textarea
-              placeholder="Escribe aquí tu mensaje"
-              class="
-                bg-[#dcd2c7]
-                col-span-12
-                rounded-md
-                py-5
-                px-4
-                placeholder:text-cafe
-                text-cafe
-                h-60
-                font-semibold
-              "
-            >
-            </textarea>
+             <v-text-field
+                v-model="email"
+                placeholder="Email"
+                 :rules="reglaEmail"
+                class="col-span-12 lg:col-span-6"
+                background-color="#DCD2C7"
+                solo
+                flat
+              >
+              </v-text-field>
 
-            <button
-              class="
-                col-span-4
-                lg:col-span-2
-                outline outline-2 outline-cafe
-                text-cafe
-                px-5
-                text-xs
-                lg:text-base
-                py-2
-                mt-2
-                rounded-full
-                hover:bg-cafe hover:text-white
-              "
-            >
-              Enviar
-            </button>
-          </div>
+              <v-textarea
+                v-model="mensaje"
+                placeholder="Escribe aquí tu mensaje"
+                :rules="reglaNotNull"
+                class="col-span-12"
+                background-color="#DCD2C7"
+                solo
+                flat
+              >
+              </v-textarea>
+
+              <button
+                type="submit"
+                class="
+                  col-span-4
+                  lg:col-span-2
+                  outline outline-2 outline-cafe
+                  text-cafe
+                  px-5
+                  text-xs
+                  lg:text-base
+                  py-2
+                  mt-2
+                  rounded-full
+                  hover:bg-cafe hover:text-white
+                "
+              >
+                Enviar
+              </button>
+            </div>
+          </v-form>
         </div>
 
         <div
@@ -328,13 +318,36 @@
 </template>
 
 <script>
-import CalendarioEventos from '../components/CalendarioEventos.vue';
+import CalendarioEventos from "../components/CalendarioEventos.vue";
 import CardContenido from "../components/CardContenido.vue";
+import VideoPlayer from "../components/VideoPlayer.vue";
 
 export default {
   layout: "default",
-  components: { CardContenido, CalendarioEventos },
+  components: { CardContenido, CalendarioEventos, VideoPlayer },
+  data() {
+    return {
+      validado: false,
+      nombre: null,
+      email: null,
+      mensaje: null,
+      reglaNotNull: [(v) => !!v || "Este campo es obligatorio"],
+      reglaEmail: [
+        (v) => !!v || "Este campo es obligatorio",
+        (v) =>
+          /.+@.+\..+/.test(v) || "Debe entregar una dirección de email válida",
+      ],
+    };
+  },
   name: "IndexPage",
+  methods: {
+    async contactarse(e) {
+      e.preventDefault();
+      try {
+        this.$refs.formulario.validate();
+      } catch (e) {}
+    },
+  },
   async asyncData(context) {
     const qs = require("qs");
 
@@ -345,7 +358,7 @@ export default {
       filters: {
         destacado: {
           $eq: true,
-        }
+        },
       },
       sort: ["fecha_inicio:desc"],
       populate: ["imagen_referencia"],
@@ -370,12 +383,15 @@ export default {
   },
   computed: {
     padding() {
-      switch(this.$vuetify.breakpoint.name) {
-        case 'xs': return 'py-8'
-        case 'sm': return 'py-8'
-        case 'lg': return 'py-24'
+      switch (this.$vuetify.breakpoint.name) {
+        case "xs":
+          return "py-8";
+        case "sm":
+          return "py-8";
+        case "lg":
+          return "py-24";
       }
-    }
-  }
+    },
+  },
 };
 </script>
