@@ -8,12 +8,12 @@ export default {
     apiUrl:
       appEnv === "development"
         ? "http://localhost:1337"
-        : "https://corelanamagallanica.cl",
+        : "https://core.lanamagallanica.cl",
   },
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: "frontend",
+    title: "Lana Magallánica",
     htmlAttrs: {
       lang: "en",
     },
@@ -23,7 +23,7 @@ export default {
       { hid: "description", name: "description", content: "" },
       { name: "format-detection", content: "telephone=no" },
     ],
-    link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
+    link: [{ rel: "icon", type: "image/x-icon", href: "/lana-favicon.svg" }],
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
@@ -31,7 +31,8 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-    { src: '@/plugins/youtube.js', ssr: false }
+    { src: '@/plugins/youtube.js', ssr: false },
+    { src: '@/plugins/fontawesome.js', ssr: false }
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components

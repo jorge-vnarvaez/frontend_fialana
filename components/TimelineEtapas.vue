@@ -21,7 +21,7 @@
         :class="`${
           $vuetify.breakpoint.mobile
             ? 'top-[240px] left-8 w-[270px] h-[250px] text-sm'
-            : 'top-[60px] left-20 w-96 h-[250px] text-base'
+            : 'top-[60px] left-20 w-96 h-[230px] text-base'
         } absolute shadow-lg px-3 lg:px-6`"
       >
         <div class="h-48 flex flex-col justify-center align-center">

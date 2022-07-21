@@ -1,6 +1,7 @@
 <template>
   <div class="flex justify-center py-8" v-if="noticia">
     <div class="w-[320px] lg:w-[1145px]">
+      <p class="mt-3 text-3xl">{{ noticia.attributes.nombre }}</p>
       <v-img
         v-if="noticia.attributes.imagen_referencia.data"
         :src="`${$config.apiUrl}${noticia.attributes.imagen_referencia.data.attributes.url}`"
@@ -13,9 +14,12 @@
         <span>{{ formatear_fecha(noticia.attributes.fecha_inicio) }}</span>
       </div>
 
-      <p class="mt-3 text-3xl">{{ noticia.attributes.nombre }}</p>
+      <div class="bg-neutral-900 my-4 py-4 px-6">
+        <span class="text-2xl text-white font-semibold">{{ noticia.attributes.sumario }}</span>
+      </div>
 
-      <div v-html="markdownToHtml(noticia.attributes.descripcion)" class="text-justify"></div>
+
+      <div v-html="markdownToHtml(noticia.attributes.descripcion)"></div>
     </div>
   </div>
 </template>

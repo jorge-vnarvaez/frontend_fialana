@@ -3,7 +3,8 @@
     <v-img
       v-if="contenido.attributes.imagen_referencia.data"
       :src="`${$config.apiUrl}${contenido.attributes.imagen_referencia.data.attributes.url}`"
-      class="rounded-tl-md rounded-tr-md h-72"
+      class="rounded-tl-md rounded-tr-md h-72 object-scale-down"
+      contains
     ></v-img>
     <v-img
       v-if="!contenido.attributes.imagen_referencia.data"

@@ -4,13 +4,6 @@
       Principales impulsores
     </p>
 
-    <span
-      class="block mt-4 text-sm lg:text-xl w-full lg:w-6/12 text-center px-8"
-    >
-      Lorem ipsum dolor sit amet, consetetur sadipsc ing elitr, sed diam nonumy
-      eirmod tempor invidunt ut labore et dolore magna
-    </span>
-
     <div
       class="
         grid grid-cols-12
@@ -18,7 +11,6 @@
         gap-y-20
         my-16
         w-10/12
-        flex flex-col
         align-center
       "
     >

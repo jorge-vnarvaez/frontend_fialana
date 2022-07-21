@@ -36,7 +36,7 @@
       </v-img>
     </div>
 
-    <div class="py-[50px] lg:py-[100px]">
+    <div class="py-[50px] lg:py-[100px] h-full">
         <entregas />
     </div>
   </div>

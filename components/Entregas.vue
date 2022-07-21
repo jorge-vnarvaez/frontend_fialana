@@ -25,7 +25,7 @@
         <div
           v-for="contenido in contenidos"
           :key="contenido.id"
-          class="col-span-12 lg:col-span-4 shadow-md"
+          class="col-span-12 lg:col-span-3 shadow-md"
         >
           <v-img
             v-if="!contenido.attributes.es_video"

@@ -157,7 +157,7 @@
             "
           >
             <a
-              href="https://goncastillos.typeform.com/to/f2VBNq0w?typeform-source=app.gather.town"
+              href="https://form.typeform.com/to/f2VBNq0w?"
               target="_blank"
               ><span class="text-white">Responder encuesta</span></a
             >

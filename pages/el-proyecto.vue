@@ -170,17 +170,13 @@
 </template>
 
 <script>
-import CardTestimonios from "../components/CardTestimonios.vue";
-import ImpulsoresSection from "../components/ImpulsoresSection.vue";
+// import CardTestimonios from "../components/CardTestimonios.vue";
 import TimelineEtapas from "../components/TimelineEtapas.vue";
-import VideoPlayer from "../components/VideoPlayer.vue";
 
 export default {
   components: {
-    CardTestimonios,
-    ImpulsoresSection,
+    // CardTestimonios,
     TimelineEtapas,
-    VideoPlayer,
   },
   data() {
     return {
