@@ -31,13 +31,12 @@ export default {
     const qs = require('qs');
 
     const query = qs.stringify({
-      populate: '*',
-      sort: ['fecha_inicio:desc']
+      sort: ['-fecha_inicio']
     })
 
     this.eventos = await this.$axios
-      .$get(`${this.$config.apiUrl}/api/eventos?${query}`)
-      .then((res) => res.data);
+      .$get(`${this.$config.apiUrl}/items/eventos?${query}`).then((res) => res.data);
+
   },
 };
 </script>

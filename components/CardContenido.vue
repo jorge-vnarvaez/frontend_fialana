@@ -1,49 +1,42 @@
 <template>
   <div class="bg-white rounded-lg shadow-md">
     <v-img
-      v-if="contenido.attributes.imagen_referencia.data"
-      :src="`${$config.apiUrl}${contenido.attributes.imagen_referencia.data.attributes.url}`"
+      v-if="contenido.imagen_referencia"
+      :src="`${$config.apiUrl}/assets/${contenido.imagen_referencia}`"
       class="rounded-tl-md rounded-tr-md h-72 object-scale-down"
       contains
     ></v-img>
     <v-img
-      v-if="!contenido.attributes.imagen_referencia.data"
+      v-if="!contenido.imagen_referencia"
       src="/ovejas.jpg"
       class="rounded-tl-md rounded-tr-md h-72"
     ></v-img>
     <div class="pa-6">
       <div class="flex">
         <span class="text-amber-600">{{
-          contenido.attributes.tipo_contenido
+          contenido.tipo_contenido
         }}</span>
         <span class="block mx-2 text-amber-600">|</span>
 
         <span class="text-amber-600">{{
-          formatear_fecha(contenido.attributes.fecha_inicio)
+          formatear_fecha(contenido.fecha_inicio)
         }}</span>
       </div>
 
-      <p class="text-xl mt-2 w-full h-[180px] lg:h-[80px] font-medium">
-        {{ contenido.attributes.nombre.length > 50 ? contenido.attributes.nombre.slice(0, 50) + `...` : contenido.attributes.nombre }}
+      <p class="text-xl mt-2 w-full font-medium">
+        {{ contenido.nombre.length > 50 ? contenido.nombre.slice(0, 50) + `...` : contenido.nombre }}
       </p>
 
       <div class="h-12">
-        <p v-if="contenido.attributes.sumario" class="text-xs lg:text-sm lg:leading-loose">
-          {{ contenido.attributes.sumario.slice(0, 101) }} ...
+        <p v-if="contenido.sumario" class="text-xs lg:text-sm lg:leading-loose">
+          {{ contenido.sumario.slice(0, 101) }} ...
         </p>
       </div>
     </div>
 
     <div class="pa-6 flex justify-end align-end">
       <nuxt-link
-        :to="{
-          name: `${
-            contenido.attributes.tipo_contenido == 'Noticia'
-              ? 'noticia-slug'
-              : 'evento-slug'
-          }`,
-          params: { slug: contenido.attributes.slug },
-        }"
+        :to="`${contenido.tipo_contenido == 'Noticia' ? 'noticia': 'evento'}/${contenido.id}/${contenido.slug}`"
       >
         <button
           class="

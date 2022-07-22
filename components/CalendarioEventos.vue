@@ -84,7 +84,7 @@
               class="
                 bg-white
                 text-xs
-                lg:text-xl
+                lg:text-lg
                 px-[4px]
                 w-[40px]
                 lg:w-[58px]
@@ -152,8 +152,7 @@ export default {
     },
     showEvent({ event }) {
       this.$router.push({
-        name: "evento-slug",
-        params: { slug: event.slug },
+        path: `/evento/${event.id}/${event.slug}`,
       });
     },
   },
@@ -163,20 +162,20 @@ export default {
     const qs = require("qs");
 
     const query = qs.stringify({
-      sort: ["fecha_inicio:asc"],
+      sort: ["fecha_inicio"],
     });
 
     await this.$axios
-      .$get(`${this.$config.apiUrl}/api/eventos?${query}`)
+      .$get(`${this.$config.apiUrl}/items/eventos?${query}`)
       .then((res) => {
         res.data.map((evento) => {
           this.events.push({
             id: evento.id,
-            name: evento.attributes.nombre,
-            slug: evento.attributes.slug,
-            details: evento.attributes.descripcion,
-            tipo_contenido: evento.attributes.tipo_contenido,
-            start: evento.attributes.fecha_inicio,
+            name: evento.nombre,
+            slug: evento.slug,
+            details: evento.descripcion,
+            tipo_contenido: evento.tipo_contenido,
+            start: evento.fecha_inicio,
             color: "orange",
           });
         });

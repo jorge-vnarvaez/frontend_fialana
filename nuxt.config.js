@@ -5,10 +5,10 @@ const appEnv = process.env.NODE_ENV || 'development';
 
 export default {
   publicRuntimeConfig: {
-    apiUrl:
-      appEnv === "development"
-        ? "http://localhost:1337"
-        : "https://core.lanamagallanica.cl",
+    apiUrl: "https://corev2.lanamagallanica.cl"
+      // appEnv === "development"
+      //   ? "http://localhost:1337"
+      //   : "https://corev2.lanamagallanica.cl",
   },
 
   // Global page headers: https://go.nuxtjs.dev/config-head

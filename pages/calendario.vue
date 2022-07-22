@@ -97,24 +97,21 @@ export default {
       this.$refs.calendar.next();
     },
     showEvent({ event }) {
-      this.$router.push({
-        name: 'evento-slug',
-        params: { slug: event.slug }
-      });
+      this.$router.push({path: `/evento/${event.id}/${event.slug}`});
     },
     async getEventos() {
       this.events = [];
 
       await this.$axios
-        .get(`${this.$config.apiUrl}/api/eventos`)
+        .get(`${this.$config.apiUrl}/items/eventos`)
         .then((response) => {
           response.data.data.map((evento) => {
             this.events.push({
               id: evento.id,
-              name: evento.attributes.nombre,
-              slug: evento.attributes.slug,
-              details: evento.attributes.descripcion,
-              start: evento.attributes.fecha_inicio,
+              name: evento.nombre,
+              slug: evento.slug,
+              details: evento.descripcion,
+              start: evento.fecha_inicio,
               color: "orange",
             });
           });

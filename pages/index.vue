@@ -181,8 +181,6 @@
         </p>
       </div>
 
-      <!-- <v-divider class="my-8 bg-${#cfcfcf} w-6/12 text-center"></v-divider> -->
-
       <div
         class="w-full flex flex-col align-center"
         v-show="destacadas.length > 0"
@@ -352,34 +350,32 @@ export default {
     const qs = require("qs");
 
     const query = qs.stringify({
-      pagination: {
-        limit: 3,
-      },
-      filters: {
-        destacado: {
-          $eq: true,
+      filter: {
+        'destacado': {
+          '_eq': true,
         },
       },
-      sort: ["fecha_inicio:desc"],
-      populate: ["imagen_referencia"],
+      sort: ["fecha_inicio"],
     });
 
     const noticias = await context.$axios
-      .get(`${context.$config.apiUrl}/api/noticias?${query}`)
+      .get(`${context.$config.apiUrl}/items/noticias?${query}`)
       .then((res) => res.data);
     const eventos = await context.$axios
-      .get(`${context.$config.apiUrl}/api/eventos?${query}`)
+      .get(`${context.$config.apiUrl}/items/eventos?${query}`)
       .then((res) => res.data);
 
     const destacadas = noticias.data
       .concat(eventos.data)
       .sort(
         (a, b) =>
-          Date.parse(b.attributes.fecha_inicio) -
-          Date.parse(a.attributes.fecha_inicio)
+          Date.parse(b.fecha_inicio) -
+          Date.parse(a.fecha_inicio)
       );
 
     return { destacadas };
+
+    return [];
   },
   computed: {
     padding() {

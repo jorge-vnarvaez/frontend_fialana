@@ -3,9 +3,8 @@
     <div class="w-[320px] lg:w-[1145px]">
       <v-img
         :src="`${
-          evento.attributes.imagen_referencia.data
-            ? $config.apiUrl +
-              evento.attributes.imagen_referencia.data.attributes.url
+          evento.imagen_referencia
+            ? $config.apiUrl + '/assets/' + evento.imagen_referencia
             : '/ovejas.jpg'
         }`"
         :width="$vuetify.breakpoint.mobile ? 320 : 1145"
@@ -37,24 +36,24 @@
                 text-orange-500
                 font-black
               "
-              >{{ formatear_dia(evento.attributes.fecha_inicio) }}</span
+              >{{ formatear_dia(evento.fecha_inicio) }}</span
             >
             <span class="text-xs lg:text-xl text-white">{{
-              formatear_nro_dia(evento.attributes.fecha_inicio)
+              formatear_nro_dia(evento.fecha_inicio)
             }}</span>
           </div>
         </div>
       </v-img>
 
       <div class="flex mt-4 align-center text-gray-900">
-        <span>{{ evento.attributes.tipo_contenido }}</span>
+        <span>{{ evento.tipo_contenido }}</span>
         <span class="block mx-2">|</span>
-        <span>{{ formatear_fecha(evento.attributes.fecha_inicio) }}</span>
+        <span>{{ formatear_fecha(evento.fecha_inicio) }}</span>
       </div>
 
-      <p class="text-3xl">{{ evento.attributes.nombre }}</p>
+      <p class="text-3xl">{{ evento.nombre }}</p>
 
-      <div v-if="evento.attributes.descripcion" v-html="markdownToHtml(evento.attributes.descripcion)" class="text-justify mt-6"></div>
+      <div v-if="evento.descripcion" v-html="markdownToHtml(evento.descripcion)" class="text-justify mt-6"></div>
 
     </div>
   </div>
@@ -69,7 +68,7 @@ export default {
   async asyncData(context) {
     const evento = await context.$axios
       .get(
-        `${context.$config.apiUrl}/api/eventos/${context.params.slug}?populate=*`
+        `${context.$config.apiUrl}/items/eventos/${context.params.id}`
       )
       .then((res) => res.data.data);
 

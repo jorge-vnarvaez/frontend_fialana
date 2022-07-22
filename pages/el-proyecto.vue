@@ -73,6 +73,7 @@
           <p class="text-3xl lg:text-5xl mb-0">Objetivos específicos</p>
         </div>
 
+
         <v-divider class="mb-12 mt-8"></v-divider>
 
         <div class="grid grid-cols-12 lg:gap-x-12 gap-y-20">
@@ -97,9 +98,9 @@
             >
               0{{ objetivo.id }}
             </div>
-            <p class="text-sm mt-4 mb-5">{{ objetivo.attributes.label }}</p>
+            <p class="text-sm mt-4 mb-5">{{ objetivo.label }}</p>
             <span class="text-xs">
-              {{ objetivo.attributes.descripcion }}
+              {{ objetivo.descripcion }}
             </span>
           </div>
         </div>
@@ -190,17 +191,18 @@ export default {
   },
   async asyncData(context) {
     const objetivos = await context.$axios
-      .get(`${context.$config.apiUrl}/api/objetivos`)
+      .get(`${context.$config.apiUrl}/items/objetivos`)
       .then((res) => res.data.data);
 
-    await context.store.dispatch("testimonios/cargarTestimonios");
+    // await context.store.dispatch("testimonios/cargarTestimonios");
+
 
     return { objetivos };
   },
   computed: {
-    testimonios() {
-      return this.$store.getters["testimonios/getTestimonios"];
-    },
+    // testimonios() {
+    //   return this.$store.getters["testimonios/getTestimonios"];
+    // },
     padding() {
       switch (this.$vuetify.breakpoint.name) {
         case "xs":

@@ -75,9 +75,9 @@
             class="col-span-12 lg:col-span-3"
           >
             <v-img
-              v-if="miembro.attributes.imagen.data"
+              v-if="miembro.imagen"
               :gradient="`${showInfoMiembro == miembro.id ? 'rgba(23, 23, 23, .55), rgba(23,23,23, .55)' : ''}`"
-              :src="`${$config.apiUrl}${miembro.attributes.imagen.data.attributes.url}`"
+              :src="`${$config.apiUrl}/assets/${miembro.imagen}`"
               @click="
                 showInfoMiembro =
                   showInfoMiembro != miembro.id ? miembro.id : false
@@ -97,11 +97,11 @@
                 </div>
                 <div>
                   <p class="mb-0 text-sm text-uppercase">
-                    {{ miembro.attributes.nombre_representativo }}
+                    {{ miembro.nombre_representativo }}
                   </p>
                   <v-divider class="bg-[#707070] my-4"></v-divider>
                   <span>
-                    {{ miembro.attributes.labor }}
+                    {{ miembro.labor }}
                   </span>
                 </div>
               </div>

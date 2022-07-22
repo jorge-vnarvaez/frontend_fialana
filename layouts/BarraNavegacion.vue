@@ -54,7 +54,7 @@
                 <span class="text-decoration-none text-white">Noticias</span>
               </li></nuxt-link
             >
-            <nuxt-link :to="{ name: 'entregas' }" class="group"
+            <!-- <nuxt-link :to="{ name: 'entregas' }" class="group"
               ><li
                 class="
                   border border-amber-100
@@ -72,7 +72,7 @@
                   >Entregas</span
                 >
               </li></nuxt-link
-            >
+            > -->
             <nuxt-link :to="{ name: 'calendario' }" class="group"
               ><li
                 class="
@@ -133,13 +133,13 @@
             >
           </div></nuxt-link
         >
-        <nuxt-link :to="{ name: 'entregas' }" class="bg-cafe w-full"
+        <!-- <nuxt-link :to="{ name: 'entregas' }" class="bg-cafe w-full"
           ><div class="bg-cafe w-full flex justify-end px-3 py-4">
             <span class="text-decoration-none text-white" @click="hideNavBar"
               >ENTREGAS</span
             >
           </div></nuxt-link
-        >
+        > -->
         <nuxt-link :to="{ name: 'calendario' }" class="bg-cafe w-full"
           ><div class="bg-cafe w-full flex justify-end px-3 py-4">
             <span class="text-decoration-none text-white" @click="hideNavBar"

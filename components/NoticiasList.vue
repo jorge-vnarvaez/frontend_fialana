@@ -28,7 +28,7 @@ export default {
   },
   async fetch() {
     this.noticias = await this.$axios
-      .$get(`${this.$config.apiUrl}/api/noticias?populate=*`)
+      .$get(`${this.$config.apiUrl}/items/noticias`)
       .then((res) => res.data);
   },
 };

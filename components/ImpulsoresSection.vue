@@ -20,14 +20,14 @@
         :key="impulsor.id"
       >
         <v-img
-          v-if="impulsor.attributes.logo.data"
-          :src="`${$config.apiUrl}${impulsor.attributes.logo.data.attributes.url}`"
+          v-if="impulsor.logo"
+          :src="`${$config.apiUrl}/assets/${impulsor.logo}`"
           :width="$vuetify.breakpoint.mobile ? 100 : 128"
           :height="$vuetify.breakpoint.mobile ? 100 : 128"
         ></v-img>
 
         <div>
-          <p class="text-sm font-medium">{{ impulsor.attributes.nombre }}</p>
+          <p class="text-sm font-medium">{{ impulsor.nombre }}</p>
           <!-- [MOBILE] -->
           <span
             class="block text-xs"
@@ -35,7 +35,7 @@
               showInfoIndex != impulsor.id && $vuetify.breakpoint.mobile == true
             "
           >
-            {{ impulsor.attributes.descripcion.slice(0, 260) }}
+            {{ impulsor.descripcion.slice(0, 260) }}
           </span>
 
           <span
@@ -44,7 +44,7 @@
             "
             class="block text-xs"
           >
-            {{ impulsor.attributes.descripcion }}
+            {{ impulsor.descripcion }}
           </span>
           <!-- [MOBILE] -->
 
@@ -52,7 +52,7 @@
             v-if="$vuetify.breakpoint.mobile == false"
             class="block text-xs w-10/12"
           >
-            {{ impulsor.attributes.descripcion }}
+            {{ impulsor.descripcion }}
           </span>
 
           <div class="mt-4 flex">
@@ -80,7 +80,7 @@
             <button class="bg-transparent">
               <a
                 class="text-decoration-none"
-                :href="impulsor.attributes.urlWeb"
+                :href="impulsor.urlWeb"
                 target="_blank"
                 ><span class="text-gray-900 text-xs">Visitar sitio web</span></a
               >
@@ -102,7 +102,7 @@ export default {
   },
   async fetch() {
     this.impulsores = await this.$axios
-      .get(`${this.$config.apiUrl}/api/impulsores?populate=logo`)
+      .get(`${this.$config.apiUrl}/items/impulsores`)
       .then((res) => res.data);
   },
 };
