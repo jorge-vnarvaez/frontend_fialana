@@ -37,7 +37,7 @@
               lana y su comercialización en mercados extranjeros- Región de
               Magallanes</span
             >
-            <div class="flex justify-end space-x-8">
+            <!-- <div class="flex justify-end space-x-8">
               <font-awesome-icon
                 :icon="['fab', 'instagram']"
                 class="h-10 w-10 px-2 rounded-full text-cafe bg-amber-100"
@@ -54,7 +54,7 @@
                 :icon="['fab', 'twitter']"
                 class="h-10 w-10 px-2 rounded-full text-cafe bg-amber-100"
               />
-            </div>
+            </div> -->
           </div>
 
           <span class="text-uppercase text-center lg:text-start">contacto@lanamagallanica.cl</span>

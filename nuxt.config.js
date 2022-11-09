@@ -6,9 +6,9 @@ const appEnv = process.env.NODE_ENV || 'development';
 export default {
   publicRuntimeConfig: {
     apiUrl: "https://corev2.lanamagallanica.cl"
-      // appEnv === "development"
-      //   ? "http://localhost:1337"
-      //   : "https://corev2.lanamagallanica.cl",
+    // appEnv === "development"
+    //   ? "http://localhost:1337"
+    //   : "https://corev2.lanamagallanica.cl",
   },
 
   // Global page headers: https://go.nuxtjs.dev/config-head
@@ -39,14 +39,15 @@ export default {
   components: true,
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
-  buildModules: ["@nuxtjs/vuetify"],
+  buildModules: ["@nuxtjs/vuetify", "@nuxtjs/tailwindcss"],
 
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: ["@nuxtjs/tailwindcss", "@nuxtjs/axios"],
+
+  modules: ['@nuxtjs/google-fonts', "@nuxtjs/axios"],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
-    extend (config, ctx) {
+    extend(config, ctx) {
       config.resolve.symlinks = false
     }
   },
@@ -79,6 +80,11 @@ export default {
         padding: ["responsive"],
       },
     },
+  },
+
+  googleFonts: {
+    Poppins: true,
+    Montserrat: true,
   },
 
   devServerHandlers: [],

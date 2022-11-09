@@ -7,12 +7,14 @@
 </template>
 
 <script>
-import BarraNavegacion from './BarraNavegacion.vue'
-import PieDePagina from './PieDePagina.vue'
+import BarraNavegacion from "./BarraNavegacion.vue";
+import PieDePagina from "./PieDePagina.vue";
 export default {
   components: { BarraNavegacion, PieDePagina },
-}
+};
 </script>
 <style>
-
+.v-application {
+  font-family: "Poppins", sans-serif;
+}
 </style>

@@ -5,44 +5,48 @@
       <v-img
         src="/HERO-INICIO.jpg"
         height="910"
-        class="text-white"
+        class="text-white flex"
         :position="$vuetify.breakpoint.mobile ? 'center' : 'bottom'"
-        gradient="rgba(23, 23, 23, .80), rgba(23,23,23, .60)"
+        gradient="rgba(23, 23, 23, .80), rgba(23,23,23, .90)"
       >
         <v-container
-          class="
-            text-white
-            flex flex-col
-            lg:justify-center
-            align-start
-            my-20
-            px-8
-          "
+          class="text-white flex flex-col lg:justify-center align-start my-12 px-8"
           fill-height
         >
-          <p class="text-3xl lg:text-5xl w-7/12 md:w-3/12 xl:w-2/12 mb-0">
-            ¡Tu opinión Nos importa!
+          <p class="text-3xl lg:text-5xl w-7/12 md:w-3/12 xl:w-4/12 mb-0">
+            ¡Postula tu proyecto!
           </p>
           <span
-            class="text-sm lg:text-xl w-9/12 lg:w-4/12 xl:w-96 text-left my-8"
-            >Participa y únete a los nuevos desafíos en torno al desarrollo y
-            producción de lana en la región de magallanes.</span
+            class="text-sm lg:text-xl w-9/12 lg:w-4/12 xl:w-8/12 text-left my-8"
+            >Para enfrentar los desafíos regionales de sector necesitamos de
+            talento y el ímpetu de Magallanes. Para esto, hemos abierto un
+            llamado público a participar del proyecto a través de iniciativas
+            que contribuyan a abordar tres problemáticas del sector.</span
           >
+
+          <span class="text-sm lg:text-xl font-bold"
+            >1. Falta de estandarización y trazabilidad en procesos
+            productivos.</span
+          >
+          <span class="text-sm lg:text-xl font-bold"
+            >2. Falta de canales de comercialización.</span
+          >
+          <span class="text-sm lg:text-xl font-bold"
+            >3. Falta de mano de obra calificada.</span
+          >
+
+          <span class="text-sm lg:text-xl block mt-4 w-9/12 lg:w-4/12 xl:w-8/12">
+            De esta forma, te ayudaremos a través de nuestros talleres
+            formativos a desarrollar y/o transformar tu idea en un proyecto
+            sólido y capaz de postular a futuros fondos concursables. Postula y
+            sé parte de las iniciativas del futuro en el sector.
+          </span>
+
           <button
-            class="
-              outline outline-2 outline-green-500
-              px-5
-              text-sm
-              lg:text-base
-              py-1
-              rounded-full
-              text-uppercase
-              lg:font-medium
-              hover:bg-green-500
-            "
+            class="outline outline-2 outline-green-500 px-5 text-sm lg:text-base py-1 rounded-full text-uppercase lg:font-medium hover:bg-green-500 mt-8"
           >
-            <a href="#section_encuesta"
-              ><span class="text-white">Responder encuesta</span></a
+            <a href="https://form.typeform.com/to/WVRanU7C" target="_blank"
+              ><span class="text-white">POSTULAR MI PROYECTO</span></a
             >
           </button>
         </v-container>
@@ -77,23 +81,7 @@
         </div>
 
         <div
-          class="
-            bg-white
-            col-span-12
-            lg:col-span-6 lg:row-span-2
-            p-[20px]
-            lg:p-[80px]
-            rounded-br-3xl
-            lg:rounded-br-none
-            rounded-tr-none
-            lg:rounded-tr-3xl
-            shadow-xl
-            h-[420px]
-            lg:h-[520px]
-            flex flex-col
-            justify-center
-            align-center
-          "
+          class="bg-white col-span-12 lg:col-span-6 lg:row-span-2 p-[20px] lg:p-[80px] rounded-br-3xl lg:rounded-br-none rounded-tr-none lg:rounded-tr-3xl shadow-xl h-[420px] lg:h-[520px] flex flex-col justify-center align-center"
         >
           <div>
             <p class="text-amber-900 text-3xl">Lana magallánica</p>
@@ -143,22 +131,9 @@
           </span>
 
           <button
-            class="
-              outline outline-2 outline-green-500
-              px-5
-              mt-16
-              text-sm
-              lg:text-base
-              py-1
-              rounded-full
-              text-uppercase
-              lg:font-medium
-              hover:bg-green-500
-            "
+            class="outline outline-2 outline-green-500 px-5 mt-16 text-sm lg:text-base py-1 rounded-full text-uppercase lg:font-medium hover:bg-green-500"
           >
-            <a
-              href="https://form.typeform.com/to/f2VBNq0w?"
-              target="_blank"
+            <a href="https://form.typeform.com/to/f2VBNq0w?" target="_blank"
               ><span class="text-white">Responder encuesta</span></a
             >
           </button>
@@ -190,14 +165,7 @@
         </div>
 
         <div
-          class="
-            grid grid-cols-12
-            gap-y-8
-            lg:gap-y-0 lg:gap-x-8
-            my-8
-            w-10/12
-            lg:w-9/12
-          "
+          class="grid grid-cols-12 gap-y-8 lg:gap-y-0 lg:gap-x-8 my-8 w-10/12 lg:w-9/12"
         >
           <card-contenido
             v-for="(destacada, index) in destacadas.slice(0, 3)"
@@ -218,19 +186,7 @@
     <div class="bg-amber-50 h-80"></div>
     <div class="relative bg-white h-[557px] flex justify-center">
       <div
-        class="
-          absolute
-          grid grid-cols-12
-          lg:gap-x-8
-          bg-white
-          shadow-lg
-          bottom-16
-          w-10/12
-          lg:w-9/12
-          px-8
-          mx-auto
-          rounded-2xl
-        "
+        class="absolute grid grid-cols-12 lg:gap-x-8 bg-white shadow-lg bottom-16 w-10/12 lg:w-9/12 px-8 mx-auto rounded-2xl"
       >
         <div
           class="py-12 col-span-12 lg:col-span-6 flex flex-col justify-center"
@@ -248,7 +204,7 @@
               <v-text-field
                 v-model="nombre"
                 placeholder="Nombre"
-                 :rules="reglaNotNull"
+                :rules="reglaNotNull"
                 class="col-span-12 lg:col-span-6"
                 background-color="#DCD2C7"
                 solo
@@ -256,10 +212,10 @@
               >
               </v-text-field>
 
-             <v-text-field
+              <v-text-field
                 v-model="email"
                 placeholder="Email"
-                 :rules="reglaEmail"
+                :rules="reglaEmail"
                 class="col-span-12 lg:col-span-6"
                 background-color="#DCD2C7"
                 solo
@@ -280,19 +236,7 @@
 
               <button
                 type="submit"
-                class="
-                  col-span-4
-                  lg:col-span-2
-                  outline outline-2 outline-cafe
-                  text-cafe
-                  px-5
-                  text-xs
-                  lg:text-base
-                  py-2
-                  mt-2
-                  rounded-full
-                  hover:bg-cafe hover:text-white
-                "
+                class="col-span-4 lg:col-span-2 outline outline-2 outline-cafe text-cafe px-5 text-xs lg:text-base py-2 mt-2 rounded-full hover:bg-cafe hover:text-white"
               >
                 Enviar
               </button>
@@ -351,8 +295,8 @@ export default {
 
     const query = qs.stringify({
       filter: {
-        'destacado': {
-          '_eq': true,
+        destacado: {
+          _eq: true,
         },
       },
       sort: ["fecha_inicio"],
@@ -367,11 +311,7 @@ export default {
 
     const destacadas = noticias.data
       .concat(eventos.data)
-      .sort(
-        (a, b) =>
-          Date.parse(b.fecha_inicio) -
-          Date.parse(a.fecha_inicio)
-      );
+      .sort((a, b) => Date.parse(b.fecha_inicio) - Date.parse(a.fecha_inicio));
 
     return { destacadas };
 

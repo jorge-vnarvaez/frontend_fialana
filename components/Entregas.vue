@@ -9,10 +9,10 @@
           :class="`${
             index == i ? 'text-white bg-cafe' : 'text-cafe'
           } + ' border-bl-xl'`"
-          @click="getContenidos(i, organizador.attributes.slug)"
+          @click="getContenidos(i, organizador.slug)"
         >
-          <p class="py-4 px-4 mb-0 font-bold">
-            {{ organizador.attributes.nombre }}
+          <p class="py-4 px-4 mb-0 font-bold cursor-pointer">
+            {{ organizador.nombre }}
           </p>
         </div>
       </div>
@@ -28,55 +28,40 @@
           class="col-span-12 lg:col-span-3 shadow-md"
         >
           <v-img
-            v-if="!contenido.attributes.es_video"
+            v-if="!contenido.es_video"
             height="180"
             :src="
-              contenido.attributes.imagen_referencia.data
-                ? $config.apiUrl +
-                  contenido.attributes.imagen_referencia.data.attributes.url
+              contenido.imagen_referencia
+                ? $config.apiUrl + '/assets/' + contenido.imagen_referencia
                 : '/productor-1.jpg'
             "
           >
           </v-img>
 
           <youtube
-            v-if="contenido.attributes.es_video"
+            v-if="contenido.es_video"
             player-width="100%"
             player-height="180"
-            :video-id="getVideoId(contenido.attributes.url)"
+            :video-id="getVideoId(contenido.url)"
             ref="youtube"
             class="aspect-auto"
           ></youtube>
 
           <div class="bg-white p-6 font-bold">
-            {{ contenido.attributes.nombre }}
+            {{ contenido.nombre }}
           </div>
 
-          <div class="p-6" v-if="!contenido.attributes.es_video">
+          <div class="p-6" v-if="!contenido.es_video">
             <a
-              :href="contenido.attributes.url"
+              v-if="contenido.archivo"
+              :href="$config.apiUrl + '/assets/' + contenido.archivo"
               target="_blank"
-              v-if="contenido.attributes.url"
             >
               <div
-                class="
-                  group
-                  border border-cafe border-2
-                  px-4
-                  py-1
-                  rounded-full
-                  hover:bg-cafe
-                  w-32
-                  cursor-pointer
-                "
+                class="group border-cafe border-2 px-4 py-1 rounded-full hover:bg-cafe w-32 cursor-pointer"
               >
                 <span
-                  class="
-                    block
-                    text-decoration-none text-cafe
-                    group-hover:text-white
-                    text-center text-sm
-                  "
+                  class="block text-decoration-none text-cafe group-hover:text-white text-center text-sm"
                   >Descargar</span
                 >
               </div>
@@ -84,6 +69,13 @@
           </div>
         </div>
       </div>
+    </div>
+
+    <div
+      v-if="contenidos.length == 0"
+      class="bg-orange-50 col-span-12 lg:col-span-9 xl:col-span-10 p-8"
+    >
+      <div class="p-6 font-bold">Aún no hay entregas disponibles</div>
     </div>
   </v-container>
 </template>
@@ -112,27 +104,26 @@ export default {
 
       const query = qs.stringify({
         populate: "*",
-        filters: {
+        filter: {
           organizador: {
             slug: {
-              $eq: slug,
+              _eq: slug,
             },
           },
         },
       });
 
       this.contenidos = await this.$axios
-        .$get(`${this.$config.apiUrl}/api/contenidos?${query}`)
+        .$get(`${this.$config.apiUrl}/items/contenidos?${query}`)
         .then((res) => res.data);
     },
   },
   async fetch() {
     this.organizadores = await this.$axios
-      .$get(`${this.$config.apiUrl}/api/organizadores`)
+      .$get(`${this.$config.apiUrl}/items/organizadores`)
       .then((res) => res.data);
   },
 };
 </script>
 
-<style>
-</style>
+<style></style>

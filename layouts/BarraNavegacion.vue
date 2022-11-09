@@ -6,8 +6,8 @@
           <nuxt-link :to="{ name: 'index' }"
             ><v-img
               src="/logo-fialana-w.svg"
-              :width="$vuetify.breakpoint.mobile ? 135 : 212"
-              :height="$vuetify.breakpoint.mobile ? 41 : 65"
+              :width="$vuetify.breakpoint.mobile ? 178 : 212"
+              :height="$vuetify.breakpoint.mobile ? 54 : 65"
             ></v-img
           ></nuxt-link>
         </div>
@@ -54,7 +54,7 @@
                 <span class="text-decoration-none text-white">Noticias</span>
               </li></nuxt-link
             >
-            <!-- <nuxt-link :to="{ name: 'entregas' }" class="group"
+            <nuxt-link :to="{ name: 'entregas' }" class="group"
               ><li
                 class="
                   border border-amber-100
@@ -72,7 +72,7 @@
                   >Entregas</span
                 >
               </li></nuxt-link
-            > -->
+            >
             <nuxt-link :to="{ name: 'calendario' }" class="group"
               ><li
                 class="
@@ -133,13 +133,13 @@
             >
           </div></nuxt-link
         >
-        <!-- <nuxt-link :to="{ name: 'entregas' }" class="bg-cafe w-full"
+        <nuxt-link :to="{ name: 'entregas' }" class="bg-cafe w-full"
           ><div class="bg-cafe w-full flex justify-end px-3 py-4">
             <span class="text-decoration-none text-white" @click="hideNavBar"
               >ENTREGAS</span
             >
           </div></nuxt-link
-        > -->
+        >
         <nuxt-link :to="{ name: 'calendario' }" class="bg-cafe w-full"
           ><div class="bg-cafe w-full flex justify-end px-3 py-4">
             <span class="text-decoration-none text-white" @click="hideNavBar"
